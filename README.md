@@ -87,7 +87,7 @@ Run 1 and 2 in the same conversation. Run 3 in a new conversation once the updat
 
 Unforgetter is made by Tiny Agency. More at unforgetter.com.
 
-Publisher: Tiny Agency ApS, Denmark. Repository: https://github.com/pete-life/unforgetter-plugin
+Publisher: Tiny Agency ApS, Denmark. Repository: https://github.com/pete-life/unforgetter-claude-plugin
 
 ## License
 
