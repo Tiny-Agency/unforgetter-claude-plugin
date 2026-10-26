@@ -12,14 +12,6 @@ The Unforgetter tools come from the hosted Unforgetter service at `https://app.u
 2. Download the Claude plugin ZIP from https://app.unforgetter.com/connect?app=claude. Then open **Customize → Plugins → Add → Upload plugin**. The plugin's tools come from the connector, so don't add Unforgetter a second time.
 3. In a conversation, choose **+ → Plugins → Unforgetter → memory**.
 
-## Connect ChatGPT
-
-1. Download the ChatGPT plugin ZIP from https://app.unforgetter.com/connect?app=chatgpt. In ChatGPT, open **Plugins → Add → Upload plugin** and select the ZIP.
-2. Use the plugin's **Connect** action, sign in with your Unforgetter account and review the permissions.
-3. Choose the Unforgetter plugin in the conversation before you start work.
-
-Use the same Unforgetter account in both apps to share the same memory.
-
 ## Permissions and automatic saving
 
 When you connect, the app asks for these permissions. You allow or deny them together:
@@ -59,7 +51,7 @@ Unforgetter Cloud stores each update when it arrives and processes it automatica
 
 ## Try it
 
-Run 1 and 2 in the same conversation. Run 3 in a new conversation, in either app, once the update is accepted.
+Run 1 and 2 in the same conversation. Run 3 in a new conversation once the update is accepted.
 
 1. "Draft a two-line update for beta testers. We decided today that the beta stays invite-only."
    - The app writes the draft, saves the decision with `propose_memory` without being asked, and ends with a short "Saved to Unforgetter" line. The update is not current memory until it is accepted.
@@ -92,6 +84,8 @@ Run 1 and 2 in the same conversation. Run 3 in a new conversation, in either app
 - Terms: https://unforgetter.com/terms
 - Security and ownership: https://unforgetter.com/security
 - Support: https://unforgetter.com/support, or hello@unforgetter.com. Please don't send passwords or other secrets.
+
+Unforgetter is made by Tiny Agency. More at unforgetter.com.
 
 Publisher: Tiny Agency ApS, Denmark. Repository: https://github.com/pete-life/unforgetter-plugin
 
