@@ -2,7 +2,7 @@
 
 Unforgetter keeps project context, decisions and preferences available to the AI apps you connect. Say it once while you work: your AI app saves it automatically, without a separate save request. Then pick up where you left off in a new conversation or in another app.
 
-This repository contains the Unforgetter plugin for Claude and ChatGPT. It holds one skill (`memory`), an icon and this README. It has no hooks and no MCP server of its own, runs no code, and makes no network calls. The skill is written guidance for the AI app. It covers when to load project context, how to show sources, and when to save a decision, preference, correction or open thread you state. It tells the app to save these automatically during ordinary work, without asking each time, once you have allowed saving when you connect.
+This repository contains the Unforgetter plugin for Claude. It holds one skill (`memory`), an icon and this README. It has no hooks and no MCP server of its own, runs no code, and makes no network calls. The skill is written guidance for the AI app. It covers when to load project context, how to show sources, and when to save a decision, preference, correction or open thread you state. It tells the app to save these automatically during ordinary work, without asking each time, once you have allowed saving when you connect.
 
 The Unforgetter tools come from the hosted Unforgetter service at `https://app.unforgetter.com/mcp`. You need an Unforgetter account. Sign-up is open at https://app.unforgetter.com/sign-up. You must be 13 or older, and under 18 you need a parent's or guardian's consent (see the terms).
 
@@ -20,13 +20,6 @@ The Unforgetter tools come from the hosted Unforgetter service at `https://app.u
 
 Use the same Unforgetter account in both apps to share the same memory.
 
-> **Verification status (26 Oct 2026).** These steps come from the live connect guides at app.unforgetter.com/connect. They describe the current manual install.
->
-> **Not verified yet:**
-> - how you install Unforgetter from the Claude directory or the ChatGPT plugin directory once it is listed
-> - the exact menu names, which can change in either app
-> - that the connector also works in Claude Code, including cloud sessions. This is stated in the repo's draft README but was not tested for this README.
-
 ## Permissions and automatic saving
 
 When you connect, the app asks for these permissions. You allow or deny them together:
@@ -34,7 +27,7 @@ When you connect, the app asks for these permissions. You allow or deny them tog
 - **Read memory** (`memory:read`). Gives the app the 8 read tools.
 - **Save updates** (`memory:propose`). Adds the 4 write tools. It is requested by default, so the app can save to your memory once you allow the connection.
 
-With the save permission, consent is given once, at connect. After that, the app sends the decisions, preferences, corrections and open threads you state to Unforgetter as you work, without asking each time. That is what lets the memory keep up without extra steps. To stop it, tell the app to stop saving in a conversation, or revoke the app's access at https://app.unforgetter.com/account.
+With the save permission, consent is given once, at connect. After that, the app sends the decisions, preferences, corrections and open threads you state to Unforgetter as you work, without asking each time. That is what lets the memory keep up without extra steps. To stop it, tell the app to stop saving in a conversation, or revoke the app's access at https://app.unforgetter.com/account. After each save, the app ends its reply with a short "Saved to Unforgetter" line, so you can see what was saved.
 
 ## The 12 tools
 
@@ -55,22 +48,22 @@ Write tools. They need the update permission. Only `delete_memory` removes saved
 
 | Tool | What it does |
 |---|---|
-| `propose_memory` | Sends a decision, constraint, preference, open question or correction you stated, in your own words. Called automatically during ordinary work. Returns a pending receipt. |
+| `propose_memory` | Sends a decision, constraint, preference, open question or correction you stated, in your own words. Called automatically during ordinary work. The app confirms it with a short "Saved to Unforgetter" line. |
 | `propose_source_correction` | Proposes a correction to one quoted passage in a source. The original is kept as history. |
 | `record_work_result` | Saves a short report of work an agent finished, with references to its evidence. The evidence is recorded as reported; Unforgetter does not check it. |
 | `delete_memory` | Permanently deletes one item of your own personal memory when you ask: a saved memory, a pending update or a work report, together with the statement it came from. If other current items come from the same statement, the app shows them and asks before deleting them too. Team memory can't be deleted. It can't be undone. |
 
 ## How updates are processed
 
-Unforgetter Cloud stores each update when it arrives and processes it automatically with OpenAI, after a short wait. There is no fixed processing time. Each one is either accepted as current memory, which can replace an older entry, or deferred with a reason. A pending receipt is not saved memory. Saved memory is confirmed by a later lookup that shows its source. When an account limit is reached, new updates are declined, and memory that is already saved stays readable.
+Unforgetter Cloud stores each update when it arrives and processes it automatically with OpenAI, after a short wait. There is no fixed processing time. Each one is either accepted as current memory, which can replace an older entry, or deferred with a reason. "Saved to Unforgetter" means an update was received and stored. It becomes current memory once accepted; a later lookup shows it with its source. When an account limit is reached, new updates are declined, and memory that is already saved stays readable.
 
 ## Try it
 
 Run 1 and 2 in the same conversation. Run 3 in a new conversation, in either app, once the update is accepted.
 
 1. "Draft a two-line update for beta testers. We decided today that the beta stays invite-only."
-   - The app writes the draft and saves the decision with `propose_memory` without being asked. You get a pending receipt.
-2. "Has my latest update been saved to memory yet, or is it still waiting?"
+   - The app writes the draft, saves the decision with `propose_memory` without being asked, and ends with a short "Saved to Unforgetter" line. The update is not current memory until it is accepted.
+2. "Has my latest update been accepted into memory yet, or is it still waiting?"
    - The app calls `get_proposal_status` (or `get_memory_status`) and reports the real status.
 3. "What have we decided about the beta? Show me where that comes from."
    - The app calls `get_context` (and maybe `get_document`) and answers with the source.
@@ -81,7 +74,7 @@ Run 1 and 2 in the same conversation. Run 3 in a new conversation, in either app
 - Unforgetter only receives what your AI app sends in a tool call. It does not read the AI app's own memory, chat history or files.
 - Saved text is stored in Unforgetter Cloud and processed with OpenAI. OpenAI also creates the search embeddings for your memory and for each search query. Unforgetter does not store the search text itself.
 - Reading memory sends relevant excerpts to the AI app you use, where that provider's terms apply.
-- The service is hosted in the EU (Railway, Netherlands). OpenAI and other providers listed in the privacy policy also process data, some of them outside the EU.
+- Hosted on Railway (EU region, Netherlands). OpenAI and other providers listed in the privacy policy also process data, some of them outside the EU.
 - Keep passwords, API keys and sensitive personal information out of your memory.
 
 ## Revoke access, export and deletion
