@@ -1,10 +1,10 @@
 {
   "name": "unforgetter",
   "displayName": "Unforgetter",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "Recall current personal memory across AI tools and propose traceable updates with consent.",
   "author": {
-    "name": "Unforgetter"
+    "name": "Tiny Agency ApS"
   },
   "homepage": "https://unforgetter.com",
   "documentationUrl": "https://unforgetter.com/docs",
