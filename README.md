@@ -4,7 +4,7 @@ Unforgetter keeps project context, decisions and preferences available to the AI
 
 This repository contains the Unforgetter plugin for Claude. It holds one skill (`memory`), an icon and this README. It has no hooks and no MCP server of its own, runs no code, and makes no network calls. The skill is written guidance for the AI app. It covers when to load project context, how to show sources, and when to save a decision, preference, correction or open thread you state. It tells the app to save these automatically during ordinary work, without asking each time, once you have allowed saving when you connect.
 
-The Unforgetter tools come from the hosted Unforgetter service at `https://app.unforgetter.com/mcp`. You need an Unforgetter account. Sign-up is open at https://app.unforgetter.com/sign-up. You must be 13 or older, and under 18 you need a parent's or guardian's consent (see the terms).
+The Unforgetter tools come from the hosted Unforgetter service at `https://app.unforgetter.com/mcp`. You need an Unforgetter account. Sign-up is open at https://app.unforgetter.com/sign-up. You must be 13 or older, and under 18 you need a parent's or guardian's consent (see the [terms](https://unforgetter.com/terms)).
 
 ## Connect Claude
 
