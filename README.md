@@ -2,7 +2,7 @@
 
 Unforgetter keeps project context, decisions and preferences available to the AI apps you connect. Say it once while you work: your AI app saves it automatically, without a separate save request. Then pick up where you left off in a new conversation or in another app.
 
-This repository contains the Unforgetter plugin for Claude. It holds one skill (`memory`), an icon and this README. It has no hooks and no MCP server of its own, runs no code, and makes no network calls. The skill is written guidance for the AI app. It covers when to load project context, how to show sources, and when to save a decision, preference, correction or open thread you state. It tells the app to save these automatically during ordinary work, without asking each time, once you have allowed saving when you connect.
+This repository contains the Unforgetter plugin for Claude and Cursor. It holds one skill (`memory`), an icon, the plugin manifests, an `mcp.json` for Cursor and this README. It has no hooks and runs no code locally. The Claude plugin has no MCP server of its own and makes no network calls. The Cursor plugin's `mcp.json` points Cursor at the hosted server. The skill is written guidance for the AI app. It covers when to load project context, how to show sources, and when to save a decision, preference, correction or open thread you state. It tells the app to save these automatically during ordinary work, without asking each time, once you have allowed saving when you connect.
 
 The Unforgetter tools come from the hosted Unforgetter service at `https://app.unforgetter.com/mcp`. You need an Unforgetter account. Sign-up is open at https://app.unforgetter.com/sign-up. You must be 13 or older, and under 18 you need a parent's or guardian's consent (see the [terms](https://unforgetter.com/terms)).
 
@@ -11,6 +11,12 @@ The Unforgetter tools come from the hosted Unforgetter service at `https://app.u
 1. In Claude, open **Settings → Connectors → Add custom connector** and enter `https://app.unforgetter.com/mcp`. Choose **Connect**, then sign in with your Unforgetter account and review the permissions.
 2. Download the Claude plugin ZIP from https://app.unforgetter.com/connect?app=claude. Then open **Customize → Plugins → Add → Upload plugin**. The plugin's tools come from the connector, so don't add Unforgetter a second time.
 3. In a conversation, choose **+ → Plugins → Unforgetter → memory**.
+
+## Connect Cursor
+
+1. Once Unforgetter is listed in the Cursor Marketplace, open **Customize**, search for Unforgetter and choose **Install**. Until then, copy this repository into `~/.cursor/plugins/local/unforgetter` and reload the window (**Developer: Reload Window**).
+2. The plugin adds the Unforgetter MCP server (`https://app.unforgetter.com/mcp`). When Cursor asks, sign in with your Unforgetter account and review the permissions. If you already added Unforgetter as an MCP server in Cursor yourself, remove that entry so it isn't connected twice.
+3. The `memory` skill loads automatically when relevant. You can also call it with `/memory`.
 
 ## Permissions and automatic saving
 
@@ -87,7 +93,7 @@ Run 1 and 2 in the same conversation. Run 3 in a new conversation once the updat
 
 Unforgetter is made by Tiny Agency. More at unforgetter.com.
 
-Publisher: Tiny Agency ApS, Denmark. Repository: https://github.com/Tiny-Agency/unforgetter-claude-plugin
+Publisher: Tiny Agency ApS, Denmark. Repository: https://github.com/Tiny-Agency/unforgetter-plugin
 
 ## License
 
