@@ -14,7 +14,7 @@ The Unforgetter tools come from the hosted Unforgetter service at `https://app.u
 
 ## Connect Cursor
 
-1. Once Unforgetter is listed in the Cursor Marketplace, open **Customize**, search for Unforgetter and choose **Install**. Until then, copy this repository into `~/.cursor/plugins/local/unforgetter` and reload the window (**Developer: Reload Window**).
+1. Once Unforgetter is listed in the Cursor Marketplace, open **Customize**, search for Unforgetter and choose **Install**. Until then, copy this repository into `~/.cursor/plugins/local/unforgetter` and reload the window (**Developer: Reload Window**). On Enterprise plans, an admin must first allow local plugin imports.
 2. The plugin adds the Unforgetter MCP server (`https://app.unforgetter.com/mcp`). When Cursor asks, sign in with your Unforgetter account and review the permissions. If you already added Unforgetter as an MCP server in Cursor yourself, remove that entry so it isn't connected twice.
 3. The `memory` skill loads automatically when relevant. You can also call it with `/memory`.
 
